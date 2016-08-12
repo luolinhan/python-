@@ -1,0 +1,18 @@
+import hashlib  
+import sys  
+import os  
+import time
+if __name__ == '__main__':  
+    m = hashlib.md5()  
+    n = 1024*4  
+    inp = open("f:\FTP\SyslogCatchAll.txt",'rb')  
+    while True:  
+        buf = inp.read(n)  
+        if buf:  
+            m.update(buf)  
+        else:  
+            break  
+    print(m.hexdigest())	
+f=open("c:\syslog.txt","a" )
+f.write(m.hexdigest()+"\n")
+f.close()
