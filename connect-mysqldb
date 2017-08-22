@@ -1,0 +1,14 @@
+import MySQLdb
+import pandas
+conn=MySQLdb.connect(host="192.168.59.XX",user="ei",passwd="XX",db="xx",charset="utf8")
+cursor = conn.cursor()
+sql="select * from bi_area"
+cursor.execute(sql)
+info = cursor.fetchall()
+for i in info:
+    print i
+    cur = conn.cursor()
+    aa = cur.execute("select * from bi_area")
+    print aa
+cursor.close()
+conn.close()
