@@ -1,0 +1,9 @@
+# 前置条件：
+1、中文识别引擎tesseract-ocr
+2、配置pytesseract.py，tesseract_cmd = 'C:/Program Files (x86)/Tesseract-OCR/tesseract.exe'
+3、图片路径为脚本目录
+ 
+from PIL import Image
+import pytesseract
+t=pytesseract.image_to_string(Image.open('1.jpg'),lang='chi_sim')
+print(t)
