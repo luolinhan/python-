@@ -1,0 +1,6 @@
+import requests
+import json
+url = 'Http://mobile-ui.septnet.cn:9090/mpaper/options'
+s = json.dumps({'schoolGuid': '72cdec5c-1d28-4f08-bc35-e8c84c160b1c', 'token': '18297782605_APP_QMOW32R5YICKO987','Version':'1.1.0'})
+r = requests.post(url, data=s)
+print (r.text)
