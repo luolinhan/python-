@@ -1,0 +1,267 @@
+#coding:utf-8
+
+#auther:luolinhan
+
+import requests
+import json
+import os
+import  sys
+import time
+
+
+f = open('log_file.txt','a+')
+f.write ("七天教育-接口测试-选课走班"+'\n')
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+url ='https://jw.stg1.septnet.cn/api/v2/Adjust/List'
+
+s = json.dumps({ "SearchType": 1,
+    "StartDateTime": "2011-04-10 00:00:00",
+    "EndDateTime": "2018-04-27 00:00:00",
+    "Rucode": "3408076",
+    "CurrentPage": 1,
+    "PerPage": 1,
+    "ASMethod": 2})
+r = requests.post(url, data=s)
+text=json.loads(r.text)
+
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+url ='https://jw.stg1.septnet.cn/api/v2/GroupLessons'
+
+s = json.dumps({
+    "Rucode": "3408076",
+    "CurrentPage": 0,
+    "PerPage": 1,
+    "StartDateTime": "2017-10-11 08:00:00",
+    "EndDateTime": "2018-10-11 08:00:00"
+})
+r = requests.post(url, data=s)
+text=json.loads(r.text)
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+
+url ='https://jw.stg1.septnet.cn/api/v2/TeacherLessonsList'
+
+s = json.dumps({
+    "TeacherMid": "5a055c0b705deb3b2fd3bb15",
+    "StartDateTime": "2017-10-01 00:00:00",
+    "EndDateTime": "2018-01-03 17:12:00"
+})
+r = requests.post(url, data=s)
+text=json.loads(r.text)
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+url ='https://jw.stg1.septnet.cn/api/v2/OtherCourses/List'
+
+s = json.dumps({
+    "ASFromMid": "5acc739df78bf21f8c94f08f",
+    "ASProposer": "5a055c0b705deb3b2fd3bb1e"
+})
+r = requests.post(url, data=s)
+text=json.loads(r.text)
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+url ='https://jw.stg1.septnet.cn/api/v2/AttendenceStat'
+
+s = json.dumps({
+    "EnrollmentYear": "2017年",
+    "Grade": "G",
+    "EndDateTime": "2018-04-20 23:59:59",
+    "Rucode": "3408076",
+    "StartDateTime": "2018-04-11 00:00:00",
+    "PublicClass":0,
+    "Student":1,
+    "ClassName":"1班",
+    "SearchText":"丁"
+})
+heders = {'Accept': 'application/json, text/plain, */*',
+'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZWxhdGVfaW5mbyI6eyJ1c2VyTWlkIjoiNWEwNTU1ZTM0Zjk3MGQwY2Q4YWY2YWIzIiwidXNlcm5hbWUiOiJyb290IiwiUnVjb2RlIjpbeyJyb2xlIjowLCJSdWNvZGUiOiIzNDA4MDgwIiwiU2Nob29sTmFtZSI6Ilx1NGUwM1x1NTkyOVx1N2Y1MVx1N2VkYyIsIlNjaG9vbFN0YXR1cyI6MX1dfSwiZXhwIjoxNTI1NDE2MTQzfQ.y627DhNEhvlUDX2efvdMoCn0IlWfGmLzMGUL6o0zbGA',
+'Connection': 'keep-alive',
+'Content-Length': '160',
+'Content-Type': 'application/json;charset=UTF-8',
+'Cookie: _ga':'GA1.3.1621902492.1524731968'
+}
+r = requests.post(url, data=s)
+text=json.loads(r.text)
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+
+url='https://jw.stg1.septnet.cn/api/v2/Semester/List/3408080/10/1/0'
+r = requests.get(url)
+text=json.loads(r.text)
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+url ='https://jw.stg1.septnet.cn/api/v2/AttendenceStat'
+
+s = json.dumps({
+    "EnrollmentYear": "2017年",
+    "Grade": "G",
+    "EndDateTime": "2018-04-20 23:59:59",
+    "Rucode": "3408076",
+    "StartDateTime": "2018-04-11 00:00:00",
+    "PublicClass":0,
+    "Student":1,
+    "ClassName":"1班",
+    "SearchText":"丁"
+})
+r = requests.post(url, data=s)
+text=json.loads(r.text)
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+url ='https://jw.stg1.septnet.cn/api/v1/LeaveList'
+
+s = json.dumps({
+    "StartDateTime": "2018-01-11 00:00:00",
+    "EndDateTime": "2018-04-16 00:00:00",
+    "Rucode": "3408076",
+    "CurrentPage": 1,
+    "PerPage": 10,
+    "SearchText": "丁"
+})
+r = requests.post(url, data=s)
+text=json.loads(r.text)
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+url ='https://jw.stg1.septnet.cn/api/v2/StudentAttendence/List'
+
+s = json.dumps({
+    "StudentGroupMid": "5a055b81705deb3b32d3bb16",
+    "EndDateTime": "2018-04-16 23:59:59",
+    "Rucode": "3408076",
+    "StartDateTime": "2018-04-11 00:00:00",
+    "StudentMid":"5a055ad1705deb3b31d3bb15"
+})
+r = requests.post(url, data=s)
+text=json.loads(r.text)
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+url ='https://jw.stg1.septnet.cn/api/v2/AttendenceBadDate'
+
+s = json.dumps({
+    "StudentGroupMid": "5a055b81705deb3b32d3bb16",
+    "EndDateTime": "2018-04-16 23:59:59",
+    "Rucode": "3408076",
+    "StartDateTime": "2018-04-11 00:00:00",
+    "StudentMid":"5a055ad1705deb3b31d3bb15"
+})
+r = requests.post(url, data=s)
+text=json.loads(r.text)
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+
+f.write ("执行时间："+time.strftime("%H:%M:%S")+'\n')
+url ='https://jw.stg1.septnet.cn/api/v2/HandleEventTask'
+
+s = json.dumps({
+    "TaskMid": "5ada8c22914398c519f1a583",
+    "TeacherMid": "5ad87b36705deb53d881f6e1",
+    "EventType": 1,
+    "status": 1,
+    "ASToMid": "5acc739df78bf21f8c94f08c",
+    "ASToLessonNum": 1,
+    "ASHandleMethod": 1,
+    "ASToTeacher": [
+        "5a055c0b705deb3b2fd3bb1a"
+    ],
+    "ASEndDate": "2018-03-06"
+})
+r = requests.post(url, data=s)
+text=json.loads(r.text)
+f.write(url+'\n')
+f.write('返回结果'+'\n')
+
+print(text)
+if (text['code']) == 200:
+    f.write('Success'+'\n')
+else:
+    f.write('fail'+'\n')
+f.write('=====================分割线======================'+'\n')
+
+f.flush()
+f.close()
