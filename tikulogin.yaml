@@ -1,0 +1,13 @@
+# 配置文件
+root:
+  mail.config: # 服务信息
+    mail_host: 'smtp.exmail.qq.com' # 服务IP
+    mail_user: 'linhan@7net.cc'
+    mail_pass: 'Zxsoft00#'
+    sender: 'linhan@7net.cc'
+    receivers: 'linhan@7net.cc'  # 用 ; 分割
+  param.config:
+    'url': 'https://tiku.7net.cc/ItemBank.OnLineService/UserServiceImpl/Login'
+    'userCode': '13739247505'
+    'userPass': '123456'
+

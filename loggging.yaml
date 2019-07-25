@@ -1,0 +1,51 @@
+# %(levelno)s：打印日志级别的数值
+# %(levelname)s：打印日志级别的名称
+# %(pathname)s：打印当前执行程序的路径，其实就是sys.argv[0]
+# %(filename)s：打印当前执行程序名
+# %(funcName)s：打印日志的当前函数
+# %(lineno)d：打印日志的当前行号
+# %(asctime)s：打印日志的时间
+# %(thread)d：打印线程ID
+# %(threadName)s：打印线程名称
+# %(process)d：打印进程ID
+# %(message)s：打印日志信息
+# 日志级别 NOTSET < DEBUG < INFO < WARNING < ERROR < CRITICAL
+version: 1
+disable_existing_loggers: False
+formatters:
+        simple:
+            format: "%(asctime)s-%(name)s-%(levelname)s-%(thread)d-%(funcName)s-%(lineno)d-%(message)s"
+handlers:
+    console:
+            class: logging.StreamHandler
+            level: DEBUG
+            formatter: simple
+            stream: ext://sys.stdout
+    debug_file_handler:
+            class: logging.handlers.RotatingFileHandler
+            level: DEBUG
+            formatter: simple
+            filename: log/debug.log
+            maxBytes: 10485760 # 10MB
+            backupCount: 20 # 滚动个数
+            encoding: utf8
+    error_file_handler:
+            class: logging.handlers.RotatingFileHandler
+            level: ERROR
+            formatter: simple
+            filename: log/error.log
+            maxBytes: 10485760 # 10MB
+            backupCount: 20 # 滚动个数
+            encoding: utf8
+loggers:
+    imtLogger:
+        level: DEBUG
+        handlers: [console, debug_file_handler, error_file_handler]
+        propagate: 0 #0表示参数不向root传递，1表示传递
+    imtFunc:
+      level: WARNING
+      handlers: [console, debug_file_handler, error_file_handler]
+      propagate: 0 #0表示参数不向root传递，1表示传递
+root:
+    level: INFO
+    handlers: [console]
