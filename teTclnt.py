@@ -18,6 +18,6 @@ while True:
         data = tcpCliSock.recv(BUFSIZ)
         if not data:
                 break
-        print data
+        print (data)
 
 tcpClisock.close()
